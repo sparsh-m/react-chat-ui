@@ -106,7 +106,11 @@ class App extends React.Component<null, State> {
           viewState={this.state.viewState}
           changeViewState={this.changeViewState}
         />
-        
+        <MainCarousel
+          showChatScreen={this.showChatScreen}
+          viewState={this.state.viewState}
+          searchTerm={this.state.searchTerm}
+        />
       </StyledApp>
     );
   }
