@@ -3,7 +3,9 @@ import React from 'react';
 import { injectGlobal } from "styled-components";
 import styled from "styled-components";
 import HeaderNav from "./HeaderNav";
-import { Transition } from "react-spring";
+import MainCarousel from "./MainCarousel";
+import HeaderTop from "./HeaderTop";
+//import { Transition } from "react-spring";
 
 
 // const GlobalStyle = createGlobalStyle`
@@ -29,7 +31,7 @@ injectGlobal`
 `;
 
 const StyledApp = styled.div`
-  max-width: 1372px;
+  max-width: 450px;
   margin: 0 auto;
   position: relative;
 `;
@@ -53,18 +55,58 @@ class App extends React.Component<null, State> {
     dropdownIsVisible: false
   };
 
+  showSearchInput = () => {
+    this.setState({ searchInputIsvisible: true, viewState: "2" });
+  };
+
+  closeSearchInput = () => {
+    this.setState({ searchInputIsvisible: false, searchTerm: "" });
+  };
+
+  handleSearchtermChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
   changeViewState = (event: SyntheticInputEvent<HTMLDataListElement>) => {
     const newState = event.target.dataset.nav;
     this.setState({ viewState: newState });
   };
 
+  showChatScreen = (id: number) => {
+    this.setState({ chatScreenIsVisible: true, currentChatId: id });
+  };
+
+  closeChatScreen = () => {
+    this.setState({ chatScreenIsVisible: false, currentChatId: 0 });
+  };
+
+  toggleDropdown = () => {
+    this.setState(prevState => {
+      return { dropdownIsVisible: !prevState.dropdownIsVisible };
+    });
+  };
+
+  showChatScreen = (id: number) => {
+    this.setState({ chatScreenIsVisible: true, currentChatId: id });
+  };
+  
   render() {
     return (
       <StyledApp>
+        <HeaderTop
+          searchTerm={this.state.searchTerm}
+          handleSearchtermChange={this.handleSearchtermChange}
+          showSearchInput={this.showSearchInput}
+          closeSearchInput={this.closeSearchInput}
+          searchInputIsvisible={this.state.searchInputIsvisible}
+          toggleDropdown={this.toggleDropdown}
+          dropdownIsVisible={this.state.dropdownIsVisible}
+        />
         <HeaderNav
           viewState={this.state.viewState}
           changeViewState={this.changeViewState}
         />
+        
       </StyledApp>
     );
   }

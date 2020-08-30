@@ -70,6 +70,14 @@ const HeaderNav = ({ changeViewState, viewState }: Props) => {
       >
         STATUS
       </StyledNavItem>
+      <StyledNavItem
+        data-nav="4"
+        onClick={changeViewState}
+        viewState={viewState}
+        current="4"
+      >
+        CALLS
+      </StyledNavItem>
     </StyledHeaderNav>
   );
 };
