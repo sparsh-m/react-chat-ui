@@ -1,22 +1,35 @@
 import React from 'react';
-import { createGlobalStyle } from "styled-components";
+//import { createGlobalStyle } from "styled-components";
+import { injectGlobal } from "styled-components";
 import styled from "styled-components";
 import HeaderNav from "./HeaderNav";
 import { Transition } from "react-spring";
 
-const GlobalStyle = createGlobalStyle`
-  *, *:before, *:after {
+
+// const GlobalStyle = createGlobalStyle`
+//   *, *:before, *:after {
+//     box-sizing: border-box;
+//   }
+//   body {
+//     font-family: 'Roboto', sans-serif;
+//     margin: 0;
+//     background-color: #f1f1f2;
+//   }
+// `
+
+injectGlobal`
+   *, *:before, *:after {
     box-sizing: border-box;
   }
-  body {
+   body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     background-color: #f1f1f2;
-  }
-`
+   }
+`;
 
 const StyledApp = styled.div`
-  max-width: 450px;
+  max-width: 1372px;
   margin: 0 auto;
   position: relative;
 `;
@@ -48,7 +61,6 @@ class App extends React.Component<null, State> {
   render() {
     return (
       <StyledApp>
-        <GlobalStyle />
         <HeaderNav
           viewState={this.state.viewState}
           changeViewState={this.changeViewState}
