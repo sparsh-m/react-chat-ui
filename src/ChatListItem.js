@@ -5,7 +5,7 @@ import messageSquare from "./images/message-square.svg";
 import video from "./images/video.svg";
 import info from "./images/info.svg";
 import { truncateString } from "./helpers";
-import { Transition } from "react-spring/renderprops";
+import { Transition } from "react-spring";
 
 const StyledListItem = styled.a`
   background: #fafafa;

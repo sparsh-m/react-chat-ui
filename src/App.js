@@ -5,7 +5,9 @@ import styled from "styled-components";
 import HeaderNav from "./HeaderNav";
 import MainCarousel from "./MainCarousel";
 import HeaderTop from "./HeaderTop";
-//import { Transition } from "react-spring";
+import ChatScreen from "./ChatScreen";
+import { Transition } from "react-spring";
+
 
 
 // const GlobalStyle = createGlobalStyle`
@@ -111,6 +113,29 @@ class App extends React.Component<null, State> {
           viewState={this.state.viewState}
           searchTerm={this.state.searchTerm}
         />
+        <Transition
+          items={this.state.chatScreenIsVisible}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+          config={{ duration: 200 }}
+        >
+          {show =>
+            show &&
+            (props => (
+              <ChatScreen
+                style={props}
+                currentChatId={this.state.currentChatId}
+                closeChatScreen={this.closeChatScreen}
+              />
+            ))
+          }
+        </Transition>
+        {/* {this.state.chatScreenIsVisible && ( */}
+        {/* <ChatScreen
+          currentChatId={this.state.currentChatId}
+          closeChatScreen={this.closeChatScreen}
+        /> */}
       </StyledApp>
     );
   }

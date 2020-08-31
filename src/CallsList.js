@@ -11,7 +11,9 @@ const StyledList = styled.div`
 const CallsList = () => {
   return (
     <StyledList>
-      <span/>
+      {calls.map(item => (
+        <CallsListItem key={item.id} {...item} />
+      ))}
     </StyledList>
   );
 };
