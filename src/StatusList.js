@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-//import StatusListItem from "./StatusListItem";
+import StatusListItem from "./StatusListItem";
 
 const StyledList = styled.div`
   padding: 0;
@@ -10,7 +10,7 @@ const StyledList = styled.div`
 const StatusList = () => {
   return (
     <StyledList>
-      <span/>
+      <StatusListItem />
     </StyledList>
   );
 };

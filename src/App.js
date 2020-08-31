@@ -1,25 +1,11 @@
-import React from 'react';
-//import { createGlobalStyle } from "styled-components";
+import React from "react";
 import { injectGlobal } from "styled-components";
 import styled from "styled-components";
 import HeaderNav from "./HeaderNav";
-import MainCarousel from "./MainCarousel";
 import HeaderTop from "./HeaderTop";
+import MainCarousel from "./MainCarousel";
 import ChatScreen from "./ChatScreen";
 import { Transition } from "react-spring";
-
-
-
-// const GlobalStyle = createGlobalStyle`
-//   *, *:before, *:after {
-//     box-sizing: border-box;
-//   }
-//   body {
-//     font-family: 'Roboto', sans-serif;
-//     margin: 0;
-//     background-color: #f1f1f2;
-//   }
-// `
 
 injectGlobal`
    *, *:before, *:after {
@@ -28,7 +14,7 @@ injectGlobal`
    body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: #f1f1f2;
+    background-color: #cef0ec;
    }
 `;
 
@@ -88,10 +74,6 @@ class App extends React.Component<null, State> {
     });
   };
 
-  showChatScreen = (id: number) => {
-    this.setState({ chatScreenIsVisible: true, currentChatId: id });
-  };
-  
   render() {
     return (
       <StyledApp>
@@ -131,11 +113,6 @@ class App extends React.Component<null, State> {
             ))
           }
         </Transition>
-        {/* {this.state.chatScreenIsVisible && ( */}
-        {/* <ChatScreen
-          currentChatId={this.state.currentChatId}
-          closeChatScreen={this.closeChatScreen}
-        /> */}
       </StyledApp>
     );
   }
